@@ -1,0 +1,13 @@
+En \node_modules\react-scripts\config en el archivo webpack.config.dev.js
+
+agregar esto para que compile, yo lo agregue en la linea 44:
+
+const crypto = require("crypto");
+const crypto_orig_createHash = crypto.createHash;
+crypto.createHash = algorithm => crypto_orig_createHash(algorithm == "md4" ? "sha256" : algorithm);
+
+lo levantas con un:  
+
+npm install
+y luego
+npm start
